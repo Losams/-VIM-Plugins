@@ -13,6 +13,7 @@ endfunction
 
 function! ResetCheckSameTerm()
     if g:flatCheckSameTerm == 1
+        let g:flatCheckSameTerm = 0
         match none
     endif
 endfunction
