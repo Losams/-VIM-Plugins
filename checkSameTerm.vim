@@ -4,8 +4,10 @@ function! CheckSameTerm()
     " Check for (any) visual mode
     if currentmode ==? 'v'
         let g:flatCheckSameTerm = 1
-        normal! "cygv
+        let @s = @"
+        normal! ygv
         exec printf('match IncSearch /\V%s/', substitute(escape(@", '/\'), '\n', '\\n', 'g'))
+        let @" = @s
     else
         match none
     endif
