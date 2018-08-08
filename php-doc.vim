@@ -411,7 +411,7 @@ func! PhpDocFunc(end_line)
         exe l:txtBOL . g:pdv_cfg_Commentn . "@access " . l:scope . g:pdv_cfg_EOL
     endif
     if l:funcname != "Constructor"
-    	exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
+    	exe l:txtBOL . g:pdv_cfg_CommentBlank . g:pdv_cfg_EOL
         exe l:txtBOL . g:pdv_cfg_Commentn . "@return " . l:returnType . g:pdv_cfg_EOL
     endif
 
@@ -565,21 +565,6 @@ func! PhpDocClass()
     endif
     if l:final != ""
         exe l:txtBOL . g:pdv_cfg_Commentn . "@final" . g:pdv_cfg_EOL
-    endif
-    if g:pdv_cfg_annotation_Package == 1
-        exe l:txtBOL . g:pdv_cfg_Commentn . "@package " . g:pdv_cfg_Package . g:pdv_cfg_EOL
-    endif
-    if g:pdv_cfg_annotation_Version == 1
-        exe l:txtBOL . g:pdv_cfg_Commentn . "@version " . g:pdv_cfg_Version . g:pdv_cfg_EOL
-    endif
-    if g:pdv_cfg_annotation_Copyright == 1
-        exe l:txtBOL . g:pdv_cfg_Commentn . "@copyright " . g:pdv_cfg_Copyright . g:pdv_cfg_EOL
-    endif
-    if g:pdv_cfg_annotation_Author == 1
-        exe l:txtBOL . g:pdv_cfg_Commentn . "@author " . g:pdv_cfg_Author . g:pdv_cfg_EOL
-    endif
-    if g:pdv_cfg_annotation_License == 1
-        exe l:txtBOL . g:pdv_cfg_Commentn . "@license " . g:pdv_cfg_License . g:pdv_cfg_EOL
     endif
 
     " Close the comment block.
