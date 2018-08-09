@@ -396,6 +396,7 @@ func! PhpDocFunc(end_line)
             let l:paramtype = " " . l:paramtype
         endif
         exe l:txtBOL . g:pdv_cfg_Commentn . "@param" . l:paramtype . " $" . l:paramname . "" . g:pdv_cfg_EOL
+        if !exists('g:pdv_cfg_HasParam') | let g:pdv_cfg_HasParam = 1 | endif
     endwhile
 
     if l:static != ""
@@ -411,7 +412,9 @@ func! PhpDocFunc(end_line)
         exe l:txtBOL . g:pdv_cfg_Commentn . "@access " . l:scope . g:pdv_cfg_EOL
     endif
     if l:funcname != "Constructor"
-    	exe l:txtBOL . g:pdv_cfg_CommentBlank . g:pdv_cfg_EOL
+        if exists('g:pdv_cfg_HasParam')
+    	   exe l:txtBOL . g:pdv_cfg_CommentBlank . g:pdv_cfg_EOL
+        endif
         exe l:txtBOL . g:pdv_cfg_Commentn . "@return " . l:returnType . g:pdv_cfg_EOL
     endif
 
